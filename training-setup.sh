@@ -62,7 +62,7 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 #sudo systemctl disable docker
 
-##CV2 you dont need this for universe but you will for works
+##OPTIONAL CV2 you dont need this for universe but you will for works
 sudo apt-get update
 #sudo apt-get install -y build-essential
 #sudo apt-get install -y cmake
@@ -83,6 +83,9 @@ cmake -G "Unix Makefiles" -DCMAKE_CXX_COMPILER=/usr/bin/g++ CMAKE_C_COMPILER=/us
 make all -j10 # 4 cores
 sudo make install
 
+
+##OPTIONAL TF NO GPU, 2.7
+pip install --upgrade tensorflow
 
 echo "You the wo/man!!!"
 echo "You must log out then back in for docker"
