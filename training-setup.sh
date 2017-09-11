@@ -6,9 +6,8 @@ echo "This is a setup script for the image Deep Learning AMI Ubuntu Linux - 1.1 
 
 INSTALLDIRECTORY=$1
 NUMBEROFWORKER=4
-
-if [[ -n "$name" ]]; then
-    
+if [[ -n "$INSTALLDIRECTORY" ]]; then
+    echo $INSTALLDIRECTORY
 else
     INSTALLDIRECTORY=~
 fi
