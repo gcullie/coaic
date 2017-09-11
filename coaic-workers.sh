@@ -1,6 +1,7 @@
 #!/bin/bash
 #scp -i "coaic-keys.pem" ~/git/coaic/worker-setup.sh ubuntu@ec2-52-55-218-56.compute-1.amazonaws.com:~
-#Don't forget to chmod u+x worker-setup.sh
+#Don't forget to chmod u+x coaic-workers.sh
+#Don't forget to to modify the SERVER URL
 
 NUMBEROFWORKERS="10"
 NUMBEROFREMOTES="10"
@@ -28,6 +29,4 @@ done
 
 COMMAND="CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id flashgames.NeonRace-v0 --num-workers 30 --visualise --job-name worker --task 0 --remotes vnc://ec2-34-205-64-193.compute-1.amazonaws.com:5901+15901"
 echo $COMMAND
-
-
 
