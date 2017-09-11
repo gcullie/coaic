@@ -4,7 +4,17 @@
 #Don't forget to chmod u+x training-setup.sh
 echo "This is a setup script for the image Deep Learning AMI Ubuntu Linux - 1.1 (ami-3568a023)"
 
+INSTALLDIRECTORY=$1
 NUMBEROFWORKER=4
+
+if [[ -n "$name" ]]; then
+    
+else
+    INSTALLDIRECTORY=~
+fi
+echo "Installing in directory $INSTALLDIRECTORY"
+
+
 sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable
 sudo apt-get update
 sudo apt-get install -y tmux htop cmake
@@ -15,12 +25,12 @@ sudo pip install --upgrade pip
 sudo apt-get install libx11-dev libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev libxxf86vm-dev libgl1-mesa-dev mesa-common-dev
 sudo pip install scipy
 
-cd ~
+cd $INSTALLDIRECTORY
 git clone https://github.com/openai/go-vncdriver.git
 cd go-vncdriver
 sudo python build.py
 sudo pip install -e .
-cd ~
+cd $INSTALLDIRECTORY
 
 sudo pip install universe
 sudo pip install six
@@ -38,7 +48,7 @@ sudo apt-get -y install htop ncdu tmux tree
 sudo apt-get install iotop sysstat dbench dtrx mc slurm qalc
 sudo apt-get install zlib1g-dev
 
-cd ~
+cd $INSTALLDIRECTORY
 git clone https://github.com/openai/universe-starter-agent.git
 sudo pip install gym[atari]
 
@@ -73,7 +83,7 @@ sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install -y libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev 
 sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2 libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
 
-cd ~
+cd $INSTALLDIRECTORY
 wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
 unzip opencv-2.4.13.zip
 cd opencv-2.4.13
