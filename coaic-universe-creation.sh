@@ -1,7 +1,15 @@
 #!/bin/bash
 #scp -i "coaic-keys.pem" ~/git/coaic/coaic-universe-creation.sh ubuntu@ec2-52-55-218-56.compute-1.amazonaws.com:~
 #Don't forget to chmod u+x coaic-universe-creation.sh
-NUMBEROFWORKERS="30"
+
+
+NUMBEROFWORKERS=$1
+if [[ -n "$NUMBEROFWORKERS" ]]; then
+    echo $NUMBEROFWORKERS
+else
+    NUMBEROFWORKERS="30"
+fi
+echo "Creating $NUMBEROFWORKERS Number of Workers"
 
 i="0"
 
