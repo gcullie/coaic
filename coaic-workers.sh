@@ -2,14 +2,16 @@
 #scp -i "coaic-keys.pem" ~/git/coaic/worker-setup.sh ubuntu@ec2-52-55-218-56.compute-1.amazonaws.com:~
 #Don't forget to chmod u+x coaic-workers.sh
 #Don't forget to to modify the SERVER URL
+echo "[Number of workers] [Name of Game] [server url] [model directory]"
 
-NUMBEROFWORKERS="10"
-NUMBEROFREMOTES="10"
+NUMBEROFWORKERS=$1
+NUMBEROFREMOTES=$1
+
 i="0"
-GAME="flashgames.NeonRace-v0"
-TRAINDIRECTORY="~/neorace"
+GAME=$2
+TRAINDIRECTORY=$4
 TRAINFILE="~/universe-starter-agent/train.py"
-SERVER="vnc://ec2-34-205-64-193.compute-1.amazonaws.com"
+SERVER="vnc://$REMOTEURL"
 SERVERLIST=""
 
 #there has to be at least 1
@@ -27,6 +29,8 @@ do
 
 done
 
-COMMAND="CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id flashgames.NeonRace-v0 --num-workers 30 --visualise --job-name worker --task 0 --remotes vnc://ec2-34-205-64-193.compute-1.amazonaws.com:5901+15901"
+COMMAND="CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id $GAME --num-worke$
+echo $COMMAND
+COMMAND="python train.py --env-id $GAME --log-dir ~/$GAME -r $SERVERLIST -w $NUMBEROFREMOTES --visualise"
 echo $COMMAND
 
