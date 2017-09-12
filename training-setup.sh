@@ -31,15 +31,15 @@ sudo python build.py
 sudo pip install -e .
 cd $INSTALLDIRECTORY
 
-sudo pip install universe
+#sudo pip install universe
 sudo pip install six
 sudo pip install opencv-python
 
-#cd ~
-#git clone https://github.com/openai/universe.git
-#cd universe
-#pip install -e .
-#sudo apt-get update
+cd $INSTALLDIRECTORY
+git clone https://github.com/openai/universe.git
+cd universe
+pip install -e .
+sudo apt-get update
 
 sudo pip install Twisted==16.4.1
 sudo pip install opencv-python
