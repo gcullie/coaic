@@ -30,7 +30,7 @@ do
 done
 
 COMMAND="CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id $GAME --num-workers $NUMBEROFREMOTES --visualise --job-name worker --task 0 --remotes $SERVERLIST"
-echo $COMMAND"
+echo $COMMAND
 COMMAND="python train.py --env-id $GAME --log-dir $TRAINDIRECTORY/$GAME -r $SERVERLIST -w $NUMBEROFREMOTES --visualise"
 echo $COMMAND
 
