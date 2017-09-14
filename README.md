@@ -6,6 +6,8 @@ coaic-workers.sh  : Creates the Workers script to cut and paste into the command
 coaic-universe-creation.sh : Creates the Remotes Environments for Works To Romote into </br>
 
 **Other helpful commands:**
+
+Google Cloud Startup Script
 ~~~
 #!/bin/bash
 cd /home/ubuntu
