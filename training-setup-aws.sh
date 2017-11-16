@@ -1,4 +1,5 @@
 #!/bin/bash
+#Don't forget to chmod u+x training-setup-aws.sh
 echo "This is a setup script for the aws image Deep Learning Base AMI (Ubuntu) (ami-f346c289) using a p3 gpu machine"
 
 
@@ -15,4 +16,4 @@ sudo pip3 install -e .
 export PATH="$PATH:/usr/local/cuda-8.0/bin"
 export LD_LIBRARY_PATH="/usr/local/cuda-8.0/lib64"
 
-echo "You da wo/man!! Don't forget to chmod u+x training-setup-aws.sh"
+echo "You da wo/man!! "
