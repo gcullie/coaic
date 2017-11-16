@@ -8,6 +8,13 @@ coaic-universe-creation.sh : Creates the Remotes Environments for Works To Romot
 **Other helpful commands:**
 
 **Google Cloud**
+machine:
+~~~
+n1-highcpu-8
+Ubutu 16.04 w/ 20gigs
+(optional) turn on **Preemptibility**
+~~~
+
 Google Cloud Startup Script
 ~~~
 #!/bin/bash
@@ -26,24 +33,35 @@ import tensorflow
 exit()
 ~~~
 
-
-
 Runs a training instance locally
 ~~~
-git clone https://github.com/openai/universe-starter-agent.git
+cd ..
+cd ubutu
 sudo python train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
- or for python 3 for the aws script
-python3 train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
 ~~~
-
 
 Point to a competition Gym
 ~~~
 CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id flashgames.NeonRace-v0 --num-workers 1 --visualise --job-name worker --task 0 --remotes vnc://35.188.180.197:5900+15900
 ~~~
 
+**AWS**
+machine
+~~~
+Deep Learning Base AMI (Ubuntu) (ami-f346c289)
+p3.2xlarge
+(optional) spot instance
+Firewall TCP rules: tcp:5900-5950;tcp:15900-16000
+~~~
 
-Tools
+~~~
+cut and paste each row from the script training-setup-aws.sh (the script does not yet work as stand alone)
+test with python 'import tensorflow'
+git clone https://github.com/openai/universe-starter-agent.git
+python3 train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
+~~~
+
+**Tools**
 TMUX
 CV2 (OpenCV)
 
