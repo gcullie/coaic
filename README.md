@@ -32,6 +32,8 @@ Runs a training instance locally
 ~~~
 git clone https://github.com/openai/universe-starter-agent.git
 sudo python train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
+ or for python 3 for the aws script
+python3 train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
 ~~~
 
 
