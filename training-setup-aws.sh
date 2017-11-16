@@ -6,7 +6,7 @@ echo "This is a setup script for the aws image Deep Learning Base AMI (Ubuntu) (
 sudo apt-get install golang libjpeg-turbo8-dev make
 sudo apt-get install -y htop
 sudo apt install docker.io
-sudo groupadd docker || true
+#sudo groupadd docker || true
 sudo usermod -aG docker $USER || true
 newgrp docker || true
 sudo pip3 install tensorflow-gpu
@@ -15,5 +15,11 @@ cd universe
 sudo pip3 install -e .
 export PATH="$PATH:/usr/local/cuda-8.0/bin"
 export LD_LIBRARY_PATH="/usr/local/cuda-8.0/lib64"
+
+cd ~
+git clone https://github.com/openai/go-vncdriver.git
+cd go-vncdriver
+sudo python build.py
+sudo pip install -e .
 
 echo "You da wo/man!! "
