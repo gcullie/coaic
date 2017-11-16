@@ -68,6 +68,13 @@ python3 train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --
 TMUX
 CV2 (OpenCV)
 
-
+**Where to go from here**
+~~~
+get familiar with the starter agent code.
+try running against other games to see what preforms well and where there are limitations.
+take a look at https://github.com/openai/baselines/tree/master/baselines for different algorithm ideas.
+instead of a digital game, modify the vnc window to manipulate something in read life!
+have fun!
+~~~
 
 
