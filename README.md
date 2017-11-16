@@ -28,6 +28,9 @@ Firewall TCP rules: tcp:5900-5950;tcp:15900-16000
 
 Validate Script Completed
 ~~~
+sudo usermod -aG docker $USER
+newgrp docker
+
 python
 import tensorflow
 exit()
