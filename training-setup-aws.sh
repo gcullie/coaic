@@ -1,5 +1,4 @@
 #!/bin/bash
-#Don't forget to chmod u+x training-setup-aws.sh
 echo "This is a setup script for the aws image Deep Learning Base AMI (Ubuntu) (ami-f346c289) using a p3 gpu machine"
 
 
