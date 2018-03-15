@@ -40,7 +40,7 @@ exit()
 Runs a training instance locally
 ~~~
 cd ..
-cd ubutu/universe-starter-agent/
+cd ubuntu/universe-starter-agent/
 sudo python train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
 ~~~
 
