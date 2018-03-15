@@ -49,7 +49,8 @@ sudo apt-get install zlib1g-dev
 
 cd $INSTALLDIRECTORY
 git clone https://github.com/openai/universe-starter-agent.git
-sudo pip install gym[atari]
+#sudo pip install gym The lastest version has an error in it, rolled back.  TODO: Check in the future for fix.
+sudo pip install gym[atari]==0.9.5
 
 sudo apt-get update
 sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
