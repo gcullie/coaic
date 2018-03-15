@@ -12,6 +12,7 @@ machine:
 ~~~
 n1-highcpu-8
 Ubutu 16.04 w/ 20gigs
+You can now have preemptive gpus on Google!! :)
 (optional) turn on **Preemptibility**
 ~~~
 
@@ -39,7 +40,7 @@ exit()
 Runs a training instance locally
 ~~~
 cd ..
-cd ubutu
+cd ubutu/universe-starter-agent/
 sudo python train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
 ~~~
 
