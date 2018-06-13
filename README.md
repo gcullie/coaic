@@ -22,7 +22,6 @@ Google Cloud Startup Script
 cd /home/ubuntu
 git clone https://github.com/gcullie/coaic.git
 cd coaic
-chmod u+x training-setup.sh
 yes Y | sudo ./training-setup.sh /home/ubuntu
 ~~~
 Firewall TCP rules: tcp:5900-5950;tcp:15900-16000

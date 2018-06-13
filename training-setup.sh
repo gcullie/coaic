@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #scp -i "coaic-keys.pem" ~/git/coaic/training-setup.sh ubuntu@ec2-52-55-218-56.compute-1.amazonaws.com:~
-#Don't forget to chmod u+x training-setup.sh
 echo "This is a setup script for OpenAI Universe on Google Cloud Ubuntu 16.04 image."
 
 INSTALLDIRECTORY=$1

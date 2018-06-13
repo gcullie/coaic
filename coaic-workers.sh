@@ -1,6 +1,5 @@
 #!/bin/bash
 #scp -i "coaic-keys.pem" ~/git/coaic/worker-setup.sh ubuntu@ec2-52-55-218-56.compute-1.amazonaws.com:~
-#Don't forget to chmod u+x coaic-workers.sh
 #Don't forget to to modify the SERVER URL
 echo "[Number of workers] [Name of Game] [server url] [model directory ex. /mnt/dsk1]"
 
