@@ -11,3 +11,5 @@ if ! dpkg-query -W cuda-8-0; then
 fi
 # Enable persistence mode
 nvidia-smi -pm 1
+#nividia-smi to verify
+#sudo modprobe nvidia    maybe needed
