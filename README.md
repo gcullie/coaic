@@ -1,32 +1,43 @@
 # coaic
-**COAIC files**
 
-training-setup.sh : This will setup a Ubuntu 16.04 server envionment. </br>
-coaic-workers.sh  : Creates the Workers script to cut and paste into the command line </br>
-coaic-universe-creation.sh : Creates the Remotes Environments for Works To Romote into </br>
+## COAIC Open AI Neural-MMO Installation
 
-**Other helpful commands:**
-
-**Google Cloud**
-machine:
+**Setup Option 1**
 ~~~
-n1-highcpu-8
-Ubutu 16.04 w/ 20gigs
-You can now have preemptive gpus on Google!! :)
-(optional) turn on **Preemptibility**
+follow the setup instruction on https://github.com/openai/neural-mmo
 ~~~
 
-Google Cloud Startup Script
+**Setup Option 2 (Docker Locally)**
 ~~~
-#!/bin/bash
-cd /home/ubuntu
-git clone https://github.com/gcullie/coaic.git
-cd coaic
-yes Y | sudo ./training-setup.sh /home/ubuntu
-~~~
-Firewall TCP rules: tcp:5900-5950;tcp:15900-16000
+1) install docker on your computer - https://docs.docker.com/install/
+2) docker pull gcullie/openai-neural-mmo:master
+3) docker run -d -p 8080:8080 gcullie/openai-neural-mmo:master tail -f /dev/null
+4) docker ps    (get the id of the running image)
+5) docker exec -i -t \<id\> /bin/bash
+6) http://localhost:8080/forge/embyr/
+7) docker stop \<id\>
+Docker installation https://github.com/gcullie/openai-neural-mmo-docker
 
-Validate Script Completed
+
+~~~
+
+**Setup Option 3 (Docker Remotely - Recommended)**
+~~~
+1) create VM on Google Cloud (4 cores and 100 gigs ubuntu 18.04)
+2) expose ports 80,8080
+3) install Docker - https://docs.docker.com/install/
+4) get the ip of the VM and change the file **neural-mmo-client/comms.js** to the ip address
+5) start step 3 from above and change the url in step 6 to you ip address.
+~~~
+
+**Running**
+~~~
+python Forge.py --render   (Runs in Realm 1)
+python Forge.py --nRealm 2 --api native --render  (Runs in Relm 2 and renders UI)
+python Forge.py --nRealm 2 --api vecenv           (Runs in Relm 2 with gym (not recommended) no UI rendering)
+~~~
+
+**Other helpful commands**
 ~~~
 sudo usermod -aG docker $USER
 newgrp docker
@@ -36,45 +47,52 @@ import tensorflow
 exit()
 ~~~
 
-Runs a training instance locally
-~~~
-cd ..
-cd ubuntu/universe-starter-agent/
-sudo python train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
-~~~
-
-Point to a competition Gym
-~~~
-CUDA_VISIBLE_DEVICES= /usr/bin/python worker.py --log-dir /home/ubuntu/neorace --env-id flashgames.NeonRace-v0 --num-workers 1 --visualise --job-name worker --task 0 --remotes vnc://35.188.180.197:5900+15900
-~~~
-
-**AWS**
-machine
-~~~
-Deep Learning Base AMI (Ubuntu) (ami-f346c289)
-p3.2xlarge
-(optional) spot instance
-Firewall TCP rules: tcp:5900-5950;tcp:15900-16000
-~~~
-
-~~~
-cut and paste each row from the script training-setup-aws.sh (the script does not yet work as stand alone)
-test with python 'import tensorflow'
-git clone https://github.com/openai/universe-starter-agent.git
-python3 train.py --env-id flashgames.NeonRace-v0 --log-dir ~/NeonRace-v0 -w 2 --visualise
-~~~
-
 **Tools**
+~~~
 TMUX
+Torch
+Tensorflow
+THREE
+TMUX
+HTOP
 CV2 (OpenCV)
+~~~
 
-**Where to go from here**
+## Where to go from here
+
+### Have a directory that survives docker restart
+
+1) Create a directory on the machine that starts docker lets say workspace
 ~~~
-get familiar with the starter agent code.
-try running against other games to see what preforms well and where there are limitations.
-take a look at https://github.com/openai/baselines/tree/master/baselines for different algorithm ideas.
-instead of a digital game, modify the vnc window to manipulate something in read life!
-have fun!
+mkdir ./workspace
 ~~~
+2) map that workspace into your docker
+~~~
+docker run -d  --volume="$(pwd)/workspace:/root/workspace" -p 8080:8080 gcullie/openai-neural-mmo:master tail -f /dev/null
+~~~
+
+### Create a development workflow
+1) docker locally for development
+~~~
+see Setup Option 2
+~~~
+2) map a *workspace* drive that is shared with your local docker instance
+~~~
+see Have a directory that survives docker restart
+~~~
+3) Modify the python on your computer in the *workspace directory
+4) Test the code in your Docker
+5) git commit your code
+6) Now start your long term training environment
+~~~
+see Setup Option 3
+~~~
+7) git clone your code and start your training
+8) make sure your trained model is not lost during a docker recycle (especially if you are using *preemptive*)
+
+
+
+
+
 
 
