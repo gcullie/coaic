@@ -42,6 +42,9 @@ python Forge.py --nRealm 2 --api vecenv           (Runs in Relm 2 with gym (not 
 sudo usermod -aG docker $USER
 newgrp docker
 
+python -m pdb Forge.py
+(h for commands)
+
 python
 import tensorflow
 exit()
@@ -56,6 +59,8 @@ THREE
 TMUX
 HTOP
 CV2 (OpenCV)
+pbd
+nano
 ~~~
 
 ## Where to go from here
@@ -90,7 +95,29 @@ see Setup Option 3
 7) git clone your code and start your training
 8) make sure your trained model is not lost during a docker recycle (especially if you are using *preemptive*)
 
+### Modify the example algorthm
 
+See Documentation https://github.com/openai/neural-mmo
+
+Luckly the classes are named for easy identification
+~~~
+*Sword*,  *forge.trinity Sword*, is the Agent (your algorithm) 
+*God*,  *forge.trinity God*, is the Server
+*Pantheon*, *forge.trinity Pantheon*, the a Cluster
+~~~
+
+So to create a world you need a *Sword*, *God*, *Pantheon* and Black*smith*, *forge.trinity simth*, put them all together to form a world.
+
+Lets see what the example Sword is doing....
+~~~
+python -m pdb Forge.py --render
+import sys
+sys.path.append("/root/projekt/neural-mmo/forge/trinity")
+b sword:80
+r
+p <value>
+exit
+~~~
 
 
 
